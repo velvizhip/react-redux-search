@@ -8,6 +8,7 @@ import {bindActionCreators} from 'redux';
 
 class Main extends React.Component{
   constructor(){
+    super();
     this.state = {'searchTxt': '', data: []};
     this.starClick = this.starClick.bind(this);
   }

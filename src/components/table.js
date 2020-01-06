@@ -35,7 +35,7 @@ class Table extends React.Component{
     )
   }
 }
-export default Table;
+
 function mapStateToProps({filterData}) {
   return {
     data: filterData
