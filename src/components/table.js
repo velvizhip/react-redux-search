@@ -12,22 +12,22 @@ class Table extends React.Component{
     this.state = {data: this.props.data};
     console.log("props", this.props)
     Object.assign(ReactTableDefaults, {
-    showPagination: false,
-    minRows: this.state.data.length
-  });
+      showPagination: false,
+      minRows: this.state.data.length
+    });
     const columns = [{
-    Header: 'First Name',
-    accessor: 'fname',
-    headerClassName: 'head'
-  }, {
-    Header: 'Last Name',
-    accessor: 'lname',
-    headerClassName: 'head'
-  }, {    
-    Header: 'Email',
-    accessor: 'email',
-    headerClassName: 'head'
-  }]
+      Header: 'First Name',
+      accessor: 'fname',
+      headerClassName: 'head'
+    }, {
+      Header: 'Last Name',
+      accessor: 'lname',
+      headerClassName: 'head'
+    }, {    
+      Header: 'Email',
+      accessor: 'email',
+      headerClassName: 'head'
+    }];
     return(
       <div className="table-section">
       <ReactTable data={this.state.data} columns={columns}/>

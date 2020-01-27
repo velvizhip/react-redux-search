@@ -5,16 +5,16 @@ import CustomerList from './helper';
 import { search } from '../actions/actions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import LifecycleHooks from './lifecycleHooks';
 
 class Main extends React.Component{
   constructor(){
     super();
     this.state = {'searchTxt': '', data: []};
-    this.starClick = this.starClick.bind(this);
+    //this.starClick = this.starClick.bind(this);
   }
-  starClick(){
-    let {search} = this.props;
-    search('');
+  starClick = () => {
+    this.props.search('');
   }
   render(){
     const {search, value, filterData} = this.props;
@@ -23,7 +23,7 @@ class Main extends React.Component{
       <div>
       <div className="search-form">
       <div>
-        <h3>Enter the search text</h3>
+        <h3>Search topic</h3>
       </div>
       <form onSubmit={(e) => { e.preventDefault(); search(this.state.searchTxt)}}>
         <div className="form-group">
@@ -42,7 +42,11 @@ function mapStateToProps({filterData}) {
   return {value: filterData.value, filterData: filterData};
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({search}, dispatch);
+const mapDispatchToProps = (dispatch) => {
+  //return bindActionCreators({search}, dispatch);
+  return {
+    search : (data) => dispatch(search(data))
+  }
+  
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Main);
